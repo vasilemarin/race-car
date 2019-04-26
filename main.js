@@ -121,7 +121,7 @@ function drawBomb() {
     for (let i = 0; i < bombs.length; i++) {
         if (bombs[i].status) {
             c.drawImage(bomb, bombs[i].x, bombs[i].y, 40, 40);
-            bombs[i].y+=4;
+            bombs[i].y++;
 
             if (bombs[i].y == 80) {
                 bombs.push({
@@ -162,6 +162,7 @@ function draw() {
     drawBomb();
     drawCoin();
     drawScore();
+    drawBomb();
 
     if (rightPressed && carX < canvas.width - 90)
         carX += 5;
