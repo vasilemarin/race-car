@@ -45,12 +45,6 @@ document.addEventListener("keyup", keyUpHandler, false);
 document.addEventListener("touchstart", touchHandler);
 document.addEventListener("touchmove", touchHandler);
 
-function touchHandler(e) {
-    if(e.touches) {
-        carX = e.touches[0].pageX - canvas.offsetLeft - 45;
-        e.preventDefault();
-    }
-}
 
 function keyDownHandler(e) {
     if (e.key == "Right" || e.key == "ArrowRight") {
@@ -176,6 +170,13 @@ function draw() {
     
     else if (backPressed && carY < canvas.height - 100)
         carY += 5;
+
+    function touchHandler(e) {
+        if(e.touches) {
+            carX = e.touches[0].pageX - canvas.offsetLeft - 45;
+            e.preventDefault();
+        }
+    }
 
     if (score >= 30) {
         alert("YOU WIN");
