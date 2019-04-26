@@ -23,6 +23,7 @@ let rightPressed = false;
 let leftPressed = false;
 let forthPressed = false;
 let backPressed = false;
+let isTouched = false;
 
 let positions = [30, 125, 220];
 
@@ -42,8 +43,18 @@ bombs[0] = {
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
-document.addEventListener("touchstart", touchHandler);
-document.addEventListener("touchmove", touchHandler);
+document.addEventListener("touchstart", touchHandler, false);
+document.addEventListener("touchmove", touchHandler, false);
+
+
+function touchHandler(e) {
+    if(e.touches) {
+        isTouched = true;
+        carX = e.touches[0].pageX - canvas.offsetLeft - 45;
+        bombCollision();
+        e.preventDefault();
+    }
+}
 
 
 function keyDownHandler(e) {
@@ -171,12 +182,8 @@ function draw() {
     else if (backPressed && carY < canvas.height - 100)
         carY += 5;
 
-    function touchHandler(e) {
-        if(e.touches) {
-            carX = e.touches[0].pageX - canvas.offsetLeft - 45;
-            e.preventDefault();
-        }
-    }
+    if (isTouched) 
+        
 
     if (score >= 30) {
         alert("YOU WIN");
