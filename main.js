@@ -42,17 +42,15 @@ bombs[0] = {
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
-document.addEventListener('touchstart', e => {
-    carX = e.changedTouches[0].pageX;
-    carX = e.changedTouches[1].pageX;
-});
+document.addEventListener("touchstart", touchHandler);
+document.addEventListener("touchmove", touchHandler);
 
-  
-document.addEventListener('touchmove', e => {
-    event.preventDefault();
-    carX = e.changedTouches[0].pageX;
-    carX = e.changedTouches[1].pageX;
-});
+function touchHandler(e) {
+    if(e.touches) {
+        carX = e.touches[0].pageX - canvas.offsetLeft - 45;
+        e.preventDefault();
+    }
+}
 
 function keyDownHandler(e) {
     if (e.key == "Right" || e.key == "ArrowRight") {
