@@ -42,6 +42,17 @@ bombs[0] = {
 
 document.addEventListener("keydown", keyDownHandler, false);
 document.addEventListener("keyup", keyUpHandler, false);
+document.addEventListener('touchstart', e => {
+    carX = e.changedTouches[0].pageX;
+    carX = e.changedTouches[1].pageX;
+});
+
+  
+document.addEventListener('touchmove', e => {
+    event.preventDefault();
+    carX = e.changedTouches[0].pageX;
+    carX = e.changedTouches[1].pageX;
+});
 
 function keyDownHandler(e) {
     if (e.key == "Right" || e.key == "ArrowRight") {
@@ -176,3 +187,4 @@ function draw() {
 }
 
 draw();
+
