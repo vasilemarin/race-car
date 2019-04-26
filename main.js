@@ -23,7 +23,6 @@ let rightPressed = false;
 let leftPressed = false;
 let forthPressed = false;
 let backPressed = false;
-let isTouched = false;
 
 let positions = [30, 125, 220];
 
@@ -49,7 +48,6 @@ document.addEventListener("touchmove", touchHandler, false);
 
 function touchHandler(e) {
     if(e.touches) {
-        isTouched = true;
         carX = e.touches[0].pageX - canvas.offsetLeft - 45;
         bombCollision();
         e.preventDefault();
@@ -181,8 +179,6 @@ function draw() {
     
     else if (backPressed && carY < canvas.height - 100)
         carY += 5;
-
-    if (isTouched) 
         
 
     if (score >= 30) {
