@@ -160,9 +160,10 @@ function draw() {
     coinCollision();
     bombCollision();
     drawBomb();
+    drawBomb();
     drawCoin();
     drawScore();
-    drawBomb();
+    
 
     if (rightPressed && carX < canvas.width - 90)
         carX += 5;
